@@ -18,6 +18,9 @@ connect(mongoURI, connectionOptions, error => {
 
 server.use(StoreRoutes);
 server.use(PaymentRoutes);
+server.get('/', (request, response) => {
+  response.send('<h1>SERVER RUNNING</h1>');
+});
 
 const PORT = process.env.PORT ?? 5000;
 server.listen(PORT, () => {
