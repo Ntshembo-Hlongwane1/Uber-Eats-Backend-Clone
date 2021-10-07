@@ -1,7 +1,11 @@
 import { Request, Response } from 'express';
 import { config } from 'dotenv';
+import Stripe from 'stripe';
 config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+// const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const stripe = new Stripe(process.env.STRIPE_SECRET, {
+  apiVersion: '2020-08-27',
+});
 
 export class Payment {
   async createsession(request: Request, response: Response) {
