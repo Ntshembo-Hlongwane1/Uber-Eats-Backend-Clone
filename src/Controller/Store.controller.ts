@@ -28,4 +28,11 @@ export class StoreController implements Store {
     const stores = await storeModel.find();
     return response.status(200).json(stores);
   }
+
+  async getStorById(request: Request, response: Response) {
+    const storeID = request.params.id;
+    const store = await storeModel.findOne({ _id: storeID });
+
+    return response.status(200).json(store);
+  }
 }

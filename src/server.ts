@@ -2,6 +2,7 @@ import express from 'express';
 import { connect, ConnectOptions } from 'mongoose';
 import { config } from 'dotenv';
 import StoreRoutes from './Routes/Store.routes';
+import PaymentRoutes from './Routes/Payment.routes';
 config();
 
 const server = express();
@@ -16,6 +17,7 @@ connect(mongoURI, connectionOptions, error => {
 });
 
 server.use(StoreRoutes);
+server.use(PaymentRoutes);
 
 const PORT = process.env.PORT ?? 5000;
 server.listen(PORT, () => {
